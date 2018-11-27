@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="Fund_Software_Test_Cucumber_Website:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/Fund_Software_Test_Cucumber_Website_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="Fund_Software_Test_Cucumber_Website/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Fund_Software_Test_Cucumber_Website" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
