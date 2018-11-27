@@ -1,10 +1,4 @@
-<%@ page import="java.util.Date" %><%--
-  Created by IntelliJ IDEA.
-  User: Owner
-  Date: 11/22/2018
-  Time: 12:33 PM
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <style>
   body {font-family: Arial, Helvetica, sans-serif;}
@@ -54,8 +48,8 @@
   .btn:hover {
     opacity: 1;
   }
-
 </style>
+
 <html>
 <head>
   <title>Tutorial Assignment Demo</title>
@@ -67,49 +61,108 @@
 <form>
   <div class="container">
     <label for="Name"><b>Name:</b></label>
-    <input type="text" placeholder="" name="name" required>
+    <input type="text" placeholder="" name="name" maxlength="30" required>
     <br/>
     <label for="Address"><b>Address:</b></label>
-    <input type="text" placeholder="" name="address" required>
+    <input type="text" placeholder="" name="address" maxlength="30" required>
     <br/>
     <label for="Card"><b>Card Type:</b></label>
-    <select>
+    <select required>
       <option value="American Express">American Express</option>
       <option value="VISA">VISA</option>
       <option value="Mastercard">Mastercard</option>
     </select>
+      <br>
+      <label for="Card Number"><b>Card Number:</b></label>
+      <input type="text" placeholder="" name="cardNumber"  class="js-cardNumber" maxlength="20"  placeholder="Card Number"  required>
+
+      <br/>
     <br/>
     <label for="Expiry Date"><b>Expiry Date:</b></label>
-    <input type="text" placeholder="" name="expiryDate" required>
+    <input type="text" placeholder="" name="expiryDate" class="js-date"   placeholder="MM / YYYY" maxlength="7" required>
 
     <br/>
     <label for="CVV Code:"><b>CVV Code:</b></label>
-    <input type="text" placeholder="" name="cvvCode" required>
+    <input type="text" placeholder="" name="cvvCode" maxlength="4" required>
 
     <br/>
     <label for="Amount"><b>Amount:</b></label>
-    <input type="text" placeholder="" name="amount" required>
+    <input type="text" placeholder="" name="amount" maxlength="10"  required>
 
     <br/>
 
-    <label for="Amount"><b>Amount:</b></label>
-    <input type="text" placeholder="" name="amount" required>
 
-    <br/>
 
     <br><br>
     <input type="submit" value="Submit">
     <input type="submit" value="Reset">
 
+<br>
+
 
   </div>
-
-  <%
-    Date date = new Date();
-    out.print("<h2>" + date.toString() + "</h2>");
-
-
-  %>
 </form>
 </body>
+
 </html>
+
+
+
+
+
+<script>
+    var input_Date = document.querySelectorAll('.js-date')[0];
+    var input_Cardnumber = document.querySelectorAll('.js-cardNumber')[0];
+    var dateInputMask = function dateInputMask(elm) {
+        elm.addEventListener('keypress', function(e) {
+            if(e.keyCode < 47 || e.keyCode > 57) {
+                e.preventDefault();
+            }
+
+            var len = elm.value.length;
+
+            // If we're at a particular place, let the user type the slash
+            // i.e., 12/12/1212
+            if(len !== 1 || len !== 3) {
+                if(e.keyCode == 47) {
+                    e.preventDefault();
+                }
+            }
+
+            // If they don't add the slash, do it for them...
+            if(len === 2) {
+                elm.value += '/';
+            }
+        });
+    };
+
+    var dateInputMask_CardNo = function dateInputMask_CardNo(elm) {
+        elm.addEventListener('keypress', function(e) {
+            var len = elm.value.length;
+
+
+            // If they don't add the slash, do it for them...
+            if(len%5 === 0) {
+                elm.value += ' ';
+            }
+        });
+    };
+
+    dateInputMask(input_Date);
+    dateInputMask_CardNo(input_Cardnumber);
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
