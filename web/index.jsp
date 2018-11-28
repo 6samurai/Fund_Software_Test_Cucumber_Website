@@ -94,8 +94,8 @@
 
 
     <br><br>
-    <input type="submit" value="Submit">
-    <input type="submit" value="Reset">
+    <input type="submit" value="Submit" id="submit">
+    <input type="submit" value="Reset" id="reset">
 
 <br>
 
@@ -150,6 +150,11 @@
 
     dateInputMask(input_Date);
     dateInputMask_CardNo(input_Cardnumber);
+
+
+    function myFunction() {
+        document.getElementById("reset").reset();
+    }
 
 
 </script>
