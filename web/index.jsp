@@ -67,7 +67,7 @@
     <input type="text" placeholder="" name="address" maxlength="30" required>
     <br/>
     <label for="Card"><b>Card Type:</b></label>
-    <select required>
+    <select required id="cardType">
       <option value="American Express">American Express</option>
       <option value="VISA">VISA</option>
       <option value="Mastercard">Mastercard</option>
@@ -83,7 +83,7 @@
 
     <br/>
     <label for="CVV Code:"><b>CVV Code:</b></label>
-    <input type="text" placeholder="" name="cvvCode" maxlength="4" required>
+    <input type="text" placeholder="" name="cvvCode" maxlength="3" required>
 
     <br/>
     <label for="Amount"><b>Amount:</b></label>
