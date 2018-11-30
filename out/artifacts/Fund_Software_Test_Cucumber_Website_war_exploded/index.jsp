@@ -61,33 +61,39 @@
 <form>
   <div class="container">
     <label for="Name"><b>Name:</b></label>
-    <input type="text" placeholder="" name="name" maxlength="30" required>
+    <input type="text" placeholder="" id="name" maxlength="30" required oninvalid="this.setCustomValidity('Please enter name')"
+           oninput="this.setCustomValidity('')">
     <br/>
     <label for="Address"><b>Address:</b></label>
-    <input type="text" placeholder="" name="address" maxlength="30" required>
+    <input type="text" placeholder="" id="address" maxlength="30"  required oninvalid="this.setCustomValidity('Please enter address')"
+           oninput="this.setCustomValidity('')">
     <br/>
     <label for="Card"><b>Card Type:</b></label>
-    <select required id="cardType">
+    <select required id="card_type">
       <option value="American Express">American Express</option>
       <option value="VISA">VISA</option>
       <option value="Mastercard">Mastercard</option>
     </select>
       <br>
       <label for="Card Number"><b>Card Number:</b></label>
-      <input type="text" placeholder="" name="cardNumber"  class="js-cardNumber" maxlength="20"  placeholder="Card Number"  required>
+      <input type="text" placeholder="" id="card_number"  class="js-cardNumber" maxlength="20"  placeholder="Card Number"  required oninvalid="this.setCustomValidity('Please enter card number')"
+             oninput="this.setCustomValidity('')">
 
       <br/>
     <br/>
     <label for="Expiry Date"><b>Expiry Date:</b></label>
-    <input type="text" placeholder="" name="expiryDate" class="js-date"   placeholder="MM / YYYY" maxlength="7" required>
+    <input type="text" placeholder="" id="expiry_date" class="js-date"   placeholder="MM / YYYY" maxlength="7" required oninvalid="this.setCustomValidity('Please enter expiry date')"
+           oninput="this.setCustomValidity('')">
 
     <br/>
     <label for="CVV Code:"><b>CVV Code:</b></label>
-    <input type="text" placeholder="" name="cvvCode" maxlength="3" required>
+    <input type="text" placeholder="" id="cvv_code" maxlength="3" required oninvalid="this.setCustomValidity('Please enter CVV code')"
+           oninput="this.setCustomValidity('')">
 
     <br/>
     <label for="Amount"><b>Amount:</b></label>
-    <input type="text" placeholder="" name="amount" maxlength="10"  required>
+    <input type="text" placeholder="" id="amount" maxlength="10"  required oninvalid="this.setCustomValidity('Please enter amount')"
+           oninput="this.setCustomValidity('')">
 
     <br/>
 
@@ -96,6 +102,8 @@
     <br><br>
     <input type="submit" value="Submit" id="submit">
     <input type="submit" value="Reset" id="reset">
+
+    <ul class="errorMessages"></ul>
 
 <br>
 
@@ -151,15 +159,7 @@
     dateInputMask(input_Date);
     dateInputMask_CardNo(input_Cardnumber);
 
-
-    function myFunction() {
-        document.getElementById("reset").reset();
-    }
-
-
 </script>
-
-
 
 
 
