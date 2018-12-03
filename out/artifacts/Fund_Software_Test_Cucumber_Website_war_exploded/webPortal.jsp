@@ -113,28 +113,10 @@
         <input type="submit" value="Submit" id="submit">
         <input type="reset" value="Reset" id="reset">
 
-        <h3 style="color:red"> ${errorMessage} <h3/>
+        <h3 style="color:red" > ${errorMessage} <h3/>
         <h3 style="color:blue;">${successMessage} </h3>
         <br>
-
-        <%
-
-            // String result =  (String)request.getAttribute("result");
-            String result = "test";
-            if (result == null) {
-
-            } else if (result.equals("valid")) {
-        %>
-        <h3 style="colour:blue;">The payment was successful</h3>
-
-        <%
-        } else if (result.equals("invalid")) {
-        %>
-        <h3 style="color: red;">An error with the processing of the transaction has occurred </h3>
-        <%
-            }
-        %>
-
+                <% String message = (String)request.getAttribute("alertMsg");%>
     </div>
 </form>
 </body>
@@ -183,9 +165,16 @@
     dateInputMask(input_Date);
     dateInputMask_CardNo(input_Cardnumber);
 
+
+
 </script>
 
-
+<script type="text/javascript">
+    var msg = "<%=message%>";
+    if(msg !=="null"){
+        alert(msg);
+    }
+</script>
 
 
 

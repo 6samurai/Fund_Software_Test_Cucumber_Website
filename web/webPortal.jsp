@@ -113,10 +113,10 @@
         <input type="submit" value="Submit" id="submit">
         <input type="reset" value="Reset" id="reset">
 
-        <h3 style="color:red"> ${errorMessage} <h3/>
+        <h3 style="color:red" > ${errorMessage} <h3/>
         <h3 style="color:blue;">${successMessage} </h3>
         <br>
-
+                <% String message = (String)request.getAttribute("alertMsg");%>
     </div>
 </form>
 </body>
@@ -165,9 +165,16 @@
     dateInputMask(input_Date);
     dateInputMask_CardNo(input_Cardnumber);
 
+
+
 </script>
 
-
+<script type="text/javascript">
+    var msg = "<%=message%>";
+    if(msg !=="null"){
+        alert(msg);
+    }
+</script>
 
 
 

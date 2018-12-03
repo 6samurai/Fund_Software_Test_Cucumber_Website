@@ -3,6 +3,7 @@ package webApp;
 import appLayer.PaymentSystem;
 import appLayer.enums.PaymentSystemInputs;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,16 +41,21 @@ public class webPortal extends HttpServlet {
             request.setAttribute("blank", "result");
             request.getRequestDispatcher("./webPortal.jsp").forward(request, response);
         }*/
+
         String list = "";
         String valid = "valid message";
-        if(paymentSystem.systemPrcoess()!=0) {
+        if(paymentSystem.systemPrcoess()==0) {
              list = name + address + card_number + card_types + expiry_date + CVV_code + amount;
             request.setAttribute("errorMessage", list);
+            request.setAttribute("alertMsg", "Transaction was successful");
+            RequestDispatcher rd=request.getRequestDispatcher("/webPortal.jsp");
+            rd.include(request, response);
         } else{
 
             list = "The payment was successful;";
 
             request.setAttribute("successMessage", valid);
+
         }
 
 
