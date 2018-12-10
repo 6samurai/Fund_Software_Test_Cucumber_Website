@@ -86,6 +86,7 @@
         <label for="card_number"><b>Card Number:</b></label>
        <input type="text" placeholder="" id="card_number" name ="card_number"class="js-cardNumber" maxlength="20"
                             placeholder="Card Number" required
+                            pattern=".{13,}"
                             oninvalid="this.setCustomValidity('Please enter card number')"
                             oninput="this.setCustomValidity('')">
 
@@ -93,12 +94,14 @@
         <br/>
         <label for="expiry_date"><b>Expiry Date:</b></label>
       <input type="text" placeholder="" id="expiry_date" name = "expiry_date" class="js-date" placeholder="MM / YYYY"
-                            maxlength="7" required oninvalid="this.setCustomValidity('Please enter expiry date')"
+                            maxlength="7"  required oninvalid="this.setCustomValidity('Please enter expiry date')"
+                            pattern=".{6,}"
                             oninput="this.setCustomValidity('')">
 
         <br/>
         <label for="cvv_code"><b>CVV Code:</b></label>
-       <input type="text" placeholder="" id="cvv_code" name = "cvv_code" maxlength="3" required
+       <input type="text" placeholder="" id="cvv_code" name = "cvv_code" maxlength="4" required
+                        pattern=".{3,}"   required title="3 characters minimum"
                          oninvalid="this.setCustomValidity('Please enter CVV code')"
                          oninput="this.setCustomValidity('')">
 

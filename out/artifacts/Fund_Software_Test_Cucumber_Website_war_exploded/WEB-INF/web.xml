@@ -17,4 +17,6 @@
     <welcome-file-list>
         <welcome-file>webPortal.jsp</welcome-file>
     </welcome-file-list>
+
+
 </web-app>
