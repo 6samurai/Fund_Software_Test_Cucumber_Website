@@ -1,10 +1,11 @@
 package appLayer.stub;
 
-import main.java.Bank.BankProxy;
+import code.Bank.BankProxy;
+import code.CardInfo.CCInfo;
 
 public class StubBankProxySuccess implements BankProxy {
     int count = 0;
-    public long auth(CardInfo.CCInfo ccInfo, long amount) {
+    public long auth(CCInfo ccInfo, long amount) {
         count++;
         return count;
     }

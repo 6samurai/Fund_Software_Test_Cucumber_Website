@@ -69,7 +69,8 @@
         <label for="Name"><b>Name:</b></label>
  <input type="text" placeholder="" id="name" name="name" maxlength="30" required
                      oninvalid="this.setCustomValidity('Please enter name')"
-                     oninput="this.setCustomValidity('')">
+                     oninput="this.setCustomValidity('')"
+                        value=${name}>
         <br/>
         <label for="Address"><b>Address:</b></label>
        <input type="text" placeholder="" id="address" name="address" maxlength="30" required
@@ -116,8 +117,6 @@
         <input type="submit" value="Submit" id="submit">
         <input type="reset" value="Reset" id="reset">
 
-        <h3 style="color:red" > ${errorMessage} <h3/>
-        <h3 style="color:blue;">${successMessage} </h3>
         <br>
                 <% String message = (String)request.getAttribute("alertMsg");%>
     </div>

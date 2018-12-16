@@ -26,7 +26,7 @@ public class webPortal extends HttpServlet {
         String CVV_code = request.getParameter(PaymentSystemInputs.CVV_CODE.toString().toLowerCase());
         String amount = request.getParameter(PaymentSystemInputs.AMOUNT.toString().toLowerCase());
 
-        PaymentSystem paymentSystem = new PaymentSystem(name,address,card_types,card_number,expiry_date,CVV_code,amount);
+        PaymentSystem paymentSystem = new PaymentSystem(name, address, card_types, card_number, expiry_date, CVV_code, amount);
 
     /*    if(paymentSystem.systemPrcoess()==0){
 
@@ -43,38 +43,45 @@ public class webPortal extends HttpServlet {
             request.getRequestDispatcher("./webPortal.jsp").forward(request, response);
         }*/
 
+
+        //request.removeAttribute("name");
         String list = "";
         String valid = "valid message";
         Results paymentSystemResults = paymentSystem.systemProcess();
-        if(paymentSystemResults.paymentResults!=0) {
-            for (String log: paymentSystemResults.logs ) {
-                list = log ;
+
+        if (paymentSystemResults.paymentResults == 1) {
+            for (String log : paymentSystemResults.logs) {
+                list = log;
             }
-            //     request.setAttribute("errorMessage", list);
+
             request.setAttribute("alertMsg", list);
+            request.setAttribute("name", request.getParameter("name"));
 
-        //    request.setAttribute("errorMessage", list);
-           // request.setAttribute("alertMsg", list);
-            RequestDispatcher rd=request.getRequestDispatcher("/webPortal.jsp");
+
+            //    request.setAttribute("errorMessage", list);
+            // request.setAttribute("alertMsg", list);
+        } else if (paymentSystemResults.paymentResults == 0) {
+
+            list = "The payment was successful";
+            request.setAttribute("alertMsg", list);
+            RequestDispatcher rd = request.getRequestDispatcher("/webPortal.jsp");
             rd.include(request, response);
-        } else{
 
-            list = "The payment was successful;";
+        } else {
 
-            request.setAttribute("successMessage", valid);
-            request.setAttribute("alertMsg", "Transaction was successful");
+            list = "An error\n" +
+                    "occurred while processing your transaction";
+            request.setAttribute("alertMsg", list);
         }
 
+        RequestDispatcher rd = request.getRequestDispatcher("/webPortal.jsp");
+        //    rd.include(request, response);
+        rd.forward(request, response);
 
-        request.getRequestDispatcher("./webPortal.jsp").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      /*  request.setAttribute("blank", "result");
-        request.getRequestDispatcher("index.jsp").forward(request, response);*/
-        //  request.getRequestDispatcher("./index.jsp").forward(request, response);
-        request.setAttribute("errorMessage","Invalid login and password. Please try again in get");
-        request.getRequestDispatcher("./webPortal.jsp").forward(request,response);
+
     }
 
 
