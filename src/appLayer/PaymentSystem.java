@@ -1,6 +1,6 @@
 package appLayer;
 
-import appLayer.stub.*;
+import appLayer.stub.StubBankProxySuccess;
 import code.CardInfo.CCInfo;
 import code.PaymentProcessor.PaymentProcessor;
 import code.TransactionDatabase.TransactionDatabase;
@@ -10,46 +10,48 @@ import java.util.List;
 
 public class PaymentSystem {
 
-    String name;
-    String address;
-    String cardType;
-    String cardNumber;
-    String expiryDate;
-    String cvvCode;
-    String amount;
+    private String name;
+    private String address;
+    private String cardType;
+    private String cardNumber;
+    private String expiryDate;
+    private String cvvCode;
+    private String amount;
 
-    public PaymentSystem(String name, String address, String cardType, String cardNumber, String expiryDate, String cvvCode, String amount){
+    public PaymentSystem(String name, String address, String cardType, String cardNumber, String expiryDate, String cvvCode, String amount) {
         this.name = name;
         this.address = address;
 
-        if(cardType.contains("American Express"))
-        this.cardType = "American_Express";
+        //to convert american express string to its assigned value of the system
+        if (cardType.contains("American Express"))
+            this.cardType = "American_Express";
         else
             this.cardType = cardType;
 
-        this.cardNumber = cardNumber.replaceAll("\\s+","");;
+        //removes any blank spaces
+        this.cardNumber = cardNumber.replaceAll("\\s+", "");
         this.expiryDate = expiryDate;
         this.cvvCode = cvvCode;
         this.amount = amount;
     }
 
 
-
-    public Results systemProcess (){
-
-        TransactionDatabase transactionDB  = new TransactionDatabase();
+    public Results systemProcess() {
+        //database
+        TransactionDatabase transactionDB = new TransactionDatabase();
+        //bank
         StubBankProxySuccess bank = new StubBankProxySuccess();
+        //error log
         List<String> logs = new ArrayList<String>();
-        CCInfo ccInfo = new CCInfo(name, address,cardType , cardNumber, expiryDate, cvvCode);
 
-        long id = (long)transactionDB.countTransactions();
+        //card info from user input
+        CCInfo ccInfo = new CCInfo(name, address, cardType, cardNumber, expiryDate, cvvCode);
 
-        PaymentProcessor paymentProcessor =  new PaymentProcessor(bank, transactionDB, logs);
+        PaymentProcessor paymentProcessor = new PaymentProcessor(bank, transactionDB, logs);
+        //payment processor
+        int result = paymentProcessor.processPayment(ccInfo, Long.parseLong(amount), "authorised");
 
-        int result =  paymentProcessor.processPayment(ccInfo,Long.parseLong(amount),"authorised");
-
-        return new Results(result,logs);
-
+        return new Results(result, logs);
     }
 }
 

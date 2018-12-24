@@ -1,8 +1,8 @@
-package code.PaymentProcessor.ErrorMessages;
+package PaymentProcessor.ErrorMessages;
 
-public class UnknownError  extends Exception{
+public class UnknownError extends Exception {
 
-    public UnknownError(){
+    public UnknownError() {
         super("An unknown error has occurred");
     }
 }

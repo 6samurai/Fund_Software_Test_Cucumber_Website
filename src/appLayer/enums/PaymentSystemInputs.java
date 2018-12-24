@@ -1,5 +1,6 @@
 package appLayer.enums;
 
+//enum list of all of the inputs o
 public enum PaymentSystemInputs {
     NAME,
     ADDRESS,
