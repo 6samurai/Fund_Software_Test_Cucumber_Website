@@ -1,4 +1,4 @@
-package VerifyOffline;
+package code.VerifyOffline;
 
 import code.CardInfo.enums.CardTypes;
 

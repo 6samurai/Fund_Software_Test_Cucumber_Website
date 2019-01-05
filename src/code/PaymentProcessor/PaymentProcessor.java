@@ -9,7 +9,7 @@ import PaymentProcessor.ErrorMessages.UserError;
 import code.TransactionDatabase.Transaction;
 import code.TransactionDatabase.TransactionDatabase;
 import TransactionDatabase.enums.States;
-import VerifyOffline.VerifyOffline;
+import code.VerifyOffline.VerifyOffline;
 
 import java.util.ArrayList;
 import java.util.Calendar;
