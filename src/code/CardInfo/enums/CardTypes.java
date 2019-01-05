@@ -1,4 +1,4 @@
-package CardInfo.enums;
+package code.CardInfo.enums;
 
 //Enum of the currently available card types
 public enum CardTypes {

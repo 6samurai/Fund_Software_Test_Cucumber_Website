@@ -49,7 +49,7 @@ public class PaymentSystem {
 
         PaymentProcessor paymentProcessor = new PaymentProcessor(bank, transactionDB, logs);
         //payment processor
-        int result = paymentProcessor.processPayment(ccInfo, Long.parseLong(amount), "authorised");
+        int result = paymentProcessor.processPayment(ccInfo, Long.parseLong(amount));
 
         return new Results(result, logs);
     }

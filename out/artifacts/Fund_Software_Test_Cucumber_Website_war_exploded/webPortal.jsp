@@ -42,7 +42,7 @@
 
 <html>
 <head>
-    <title>Tutorial Assignment Demo</title>
+    <title>Web Portal</title>
 </head>
 <body>
 <h3>Payment Processing Form</h3>

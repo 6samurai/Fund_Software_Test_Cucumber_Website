@@ -1,6 +1,6 @@
 package code.CardInfo;
 
-import CardInfo.enums.CardTypes;
+import code.CardInfo.enums.CardTypes;
 
 public class CCInfo {
     private String customerName;
